@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Would You Rather</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: white;
+    }
+    .split {
+        height: 100%;
+        width: 50%;
+        position: fixed;
+        top: 0;
+        overflow-x: hidden;
+        padding-top: 20px;
+        box-sizing: border-box;
+    }
+
+    .left {
+        left: 0;
+    }
+    #leftbackground {
+        border-right: 3px solid white;
+        background-color: #ffaeae;
+    }
+    #lefth1 {
+        -webkit-text-stroke-color: rgb(161, 0, 0);
+    }
+
+    .right {
+        right: 0;
+    }
+    #rightbackground {
+        border-left: 3x solid white;
+        background-color: rgb(111, 209, 255);
+    }
+    #righth1 {
+        -webkit-text-stroke-color: rgb(0, 101, 148);
+    }
+    .topcenter {
+        position: absolute;
+        top: 5%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        -webkit-text-stroke-width: 2px;
+        font-size: 5vw;
+    }
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    .dot {
+      position: absolute;
+      width: 7vw;
+      height: 7vw;
+      border-radius: 50%;
+      border-width: 0.4vw;
+      border-style: solid;
+    }
+    .blue {
+      background-color: rgb(0, 149, 218);
+      border-color:rgb(0, 101, 148);
+    }
+    .red {
+      background-color: #ff4848;
+      border-color: rgb(161, 0, 0);
+    }
+    h1 {
+        /* -webkit-text-stroke-width: 2px; */
+        font-size: 3vw;
+    }
+    .fullscreen {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+    }
+    .next-button {
+        position: absolute;
+        border-radius: 50%;
+        /* border: 2px solid rgb(180, 180, 180); */
+        height: 10vw;
+        width: 10vw;
+        font-size: 3vw;
+        cursor: pointer;
+        position: absolute;
+        /* text-align: center; */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+    }
+    .next-button:hover {
+        height: 9vw;
+        width: 9vw;
+    }
+    #fullscreenbutton {
+        z-index: 2;
+        position: absolute;
+        right: 0%;
+        width: 10vw;
+        height: 5vw;
+        font-size: 1.5vw;
+    }
+  </style>
+</head>
+<body>
+    <div> 
+        <div class="split left" id="leftbackground">
+        </div>
+            
+        <div class="split right" id="rightbackground">
+        </div>
+    </div>
+    <div id="dotholder" class="fullscreen"></div>
+    <div> 
+        <div class="split left">
+            <p id="redcount" class="topcenter">50%</p>
+            <div class="centered">
+                <h1 id="lefth1"></h1>
+            </div>
+        </div>
+            
+        <div class="split right">
+            <p id="bluecount" class="topcenter">50%</p>
+            <div class="centered">
+                <h1 id="righth1"></h1>
+            </div>
+        </div>
+    </div>
+    <div id="dotclicker" class="fullscreen"></div>
+    <!-- <button class="next-button">next</button> -->
+    <img class="next-button" src="image.png" alt="Next button">
+    <button onclick="toggleFullscreen()" id="fullscreenbutton">Toggle Fullscreen</button>
+    <script src="options.js"></script>
+    <script>
+        // const leftSide = document.getElementById('left-side');
+        // const rightSide = document.getElementById('right-side');
+        const dots = document.getElementById('dotholder');
+        const dotbutton = document.getElementById('dotclicker');
+        let rednum = 0;
+        let bluenum = 0;
+        // import { options } from './options.js';
+        // options = require('./options');
+        function createDot(event) {
+            const dot = document.createElement('div');
+            dot.style.left = 100 * (event.clientX - 25)/window.innerWidth + '%';
+            dot.style.top = 100 * (event.clientY - 25)/window.innerHeight + '%';
+
+            if (event.clientX < window.innerWidth / 2) {
+                dot.classList.add('red');
+                dot.classList.add('dot');
+                dots.appendChild(dot);
+                rednum++;
+                update();
+            } else {
+                dot.classList.add('blue');
+                dot.classList.add('dot');
+                dots.appendChild(dot);
+                bluenum++;
+                update();
+            }
+        }
+        function update() {
+            const redstat = document.getElementById("redcount");
+            const bluestat = document.getElementById("bluecount");
+            const tot = rednum + bluenum;
+            redstat.textContent = tot == 0 ? "50%": Math.round(100 * rednum / (rednum + bluenum)) + "%";
+            bluestat.textContent = tot == 0 ? "50%":  Math.round(100 * bluenum / (rednum + bluenum)) + "%";
+        }
+        function newPrompt() {
+            const left = document.getElementById("lefth1");
+            const right = document.getElementById("righth1");
+            const question = options[Math.floor(Math.random() * options.length)];
+            left.textContent = question[0];
+            right.textContent = question[1];
+            dots.innerHTML = '';
+            rednum = 0;
+            bluenum = 0;
+            update();
+        }
+        function toggleFullscreen() {
+            const element = document.documentElement;
+
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                element.requestFullscreen();
+            }
+        }
+
+        dotbutton.addEventListener('click', createDot);
+        // You can add event listeners and functionality to the button here
+        const nextButton = document.querySelector('.next-button');
+
+        nextButton.addEventListener('click', newPrompt);
+        document.addEventListener("DOMContentLoaded", newPrompt);
+    </script>
+</body>
+</html>
