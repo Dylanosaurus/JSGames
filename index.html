@@ -81,24 +81,39 @@
         width: 100%;
         height: 100vh;
     }
-    .next-button {
+    #next-button {
         position: absolute;
-        border-radius: 50%;
-        /* border: 2px solid rgb(180, 180, 180); */
         height: 10vw;
         width: 10vw;
         font-size: 3vw;
+        border-radius: 50%;
         cursor: pointer;
-        position: absolute;
-        /* text-align: center; */
+        padding: 2vw;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         background-color: white;
     }
-    .next-button:hover {
+    #next-button:hover {
         height: 9vw;
         width: 9vw;
+        /* transform: scale(0.9); */
+    }
+    #next-button:active {
+        height: 8vw;
+        width: 8vw;
+        /* transform: scale(0.9); */
+    }
+    #next-button-img {
+        position: absolute;
+        height: 60%;
+        width: 60%;
+        font-size: 3vw;
+        cursor: pointer;
+        padding: 2vw;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
     #fullscreenbutton {
         z-index: 2;
@@ -136,7 +151,9 @@
     </div>
     <div id="dotclicker" class="fullscreen"></div>
     <!-- <button class="next-button">next</button> -->
-    <img class="next-button" src="image.png" alt="Next button">
+    <div id="next-button">
+        <img id="next-button-img" src="undo.png" alt="Next button">
+    </div>
     <button onclick="toggleFullscreen()" id="fullscreenbutton">Toggle Fullscreen</button>
     <script src="options.js"></script>
     <script>
@@ -197,7 +214,7 @@
 
         dotbutton.addEventListener('click', createDot);
         // You can add event listeners and functionality to the button here
-        const nextButton = document.querySelector('.next-button');
+        const nextButton = document.getElementById('next-button');
 
         nextButton.addEventListener('click', newPrompt);
         document.addEventListener("DOMContentLoaded", newPrompt);
