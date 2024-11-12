@@ -7,55 +7,62 @@
       margin: 0;
       overflow: hidden;
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        color: white;
+      color: white;
     }
     .split {
-        height: 100%;
-        width: 50%;
-        position: fixed;
-        top: 0;
-        overflow-x: hidden;
-        padding-top: 20px;
-        box-sizing: border-box;
+      height: 100%;
+      width: 50%;
+      position: fixed;
+      top: 0;
+      overflow-x: hidden;
+      padding-top: 20px;
+      box-sizing: border-box;
     }
 
     .left {
-        left: 0;
+      left: 0;
     }
+
     #leftbackground {
-        border-right: 3px solid white;
-        background-color: #ffaeae;
+      border-right: 3px solid white;
+      background-color: #ffaeae;
     }
+
     #lefth1 {
-        -webkit-text-stroke-color: rgb(161, 0, 0);
+      -webkit-text-stroke-color: rgb(161, 0, 0);
     }
 
     .right {
-        right: 0;
+      right: 0;
     }
+
     #rightbackground {
-        border-left: 3x solid white;
-        background-color: rgb(111, 209, 255);
+      border-left: 3px solid white;
+      background-color: rgb(111, 209, 255);
     }
+
     #righth1 {
-        -webkit-text-stroke-color: rgb(0, 101, 148);
+      -webkit-text-stroke-color: rgb(0, 101, 148);
     }
+
     .topcenter {
-        position: absolute;
-        top: 5%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        -webkit-text-stroke-width: 2px;
-        font-size: 5vw;
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      -webkit-text-stroke-width: 2px;
+      font-size: 5vw;
     }
+
     .centered {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
     }
+
     .dot {
       position: absolute;
       width: 7vw;
@@ -64,160 +71,196 @@
       border-width: 0.4vw;
       border-style: solid;
     }
+
     .blue {
       background-color: rgb(0, 149, 218);
-      border-color:rgb(0, 101, 148);
+      border-color: rgb(0, 101, 148);
     }
+
     .red {
       background-color: #ff4848;
       border-color: rgb(161, 0, 0);
     }
+
     h1 {
-        /* -webkit-text-stroke-width: 2px; */
-        font-size: 3vw;
+      font-size: 3vw;
     }
+
     .fullscreen {
-        position: absolute;
-        width: 100%;
-        height: 100vh;
+      position: absolute;
+      width: 100%;
+      height: 100vh;
     }
+
     #next-button {
-        position: absolute;
-        height: 10vw;
-        width: 10vw;
-        font-size: 3vw;
-        border-radius: 50%;
-        cursor: pointer;
-        padding: 2vw;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
+      position: absolute;
+      height: 10vw;
+      width: 10vw;
+      font-size: 3vw;
+      border-radius: 50%;
+      cursor: pointer;
+      padding: 2vw;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
     }
+
     #next-button:hover {
-        height: 9vw;
-        width: 9vw;
-        /* transform: scale(0.9); */
+      height: 9vw;
+      width: 9vw;
     }
+
     #next-button:active {
-        height: 8vw;
-        width: 8vw;
-        /* transform: scale(0.9); */
+      height: 8vw;
+      width: 8vw;
     }
+
     #next-button-img {
-        position: absolute;
-        height: 60%;
-        width: 60%;
-        font-size: 3vw;
-        cursor: pointer;
-        padding: 2vw;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+      position: absolute;
+      height: 60%;
+      width: 60%;
+      font-size: 3vw;
+      cursor: pointer;
+      padding: 2vw;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
+
     #fullscreenbutton {
-        z-index: 2;
-        position: absolute;
-        right: 0%;
-        width: 10vw;
-        height: 5vw;
-        font-size: 1.5vw;
+      z-index: 2;
+      position: absolute;
+      right: 0%;
+      width: 10vw;
+      height: 5vw;
+      font-size: 1.5vw;
     }
   </style>
 </head>
 <body>
-    <div> 
-        <div class="split left" id="leftbackground">
-        </div>
-            
-        <div class="split right" id="rightbackground">
-        </div>
+  <div> 
+    <div class="split left" id="leftbackground"></div>
+    <div class="split right" id="rightbackground"></div>
+  </div>
+  <div id="dotholder" class="fullscreen"></div>
+  <div> 
+    <div class="split left">
+      <p id="redcount" class="topcenter">50%</p>
+      <div class="centered">
+        <h1 id="lefth1"></h1>
+      </div>
     </div>
-    <div id="dotholder" class="fullscreen"></div>
-    <div> 
-        <div class="split left">
-            <p id="redcount" class="topcenter">50%</p>
-            <div class="centered">
-                <h1 id="lefth1"></h1>
-            </div>
-        </div>
-            
-        <div class="split right">
-            <p id="bluecount" class="topcenter">50%</p>
-            <div class="centered">
-                <h1 id="righth1"></h1>
-            </div>
-        </div>
+    <div class="split right">
+      <p id="bluecount" class="topcenter">50%</p>
+      <div class="centered">
+        <h1 id="righth1"></h1>
+      </div>
     </div>
-    <div id="dotclicker" class="fullscreen"></div>
-    <!-- <button class="next-button">next</button> -->
-    <div id="next-button">
-        <img id="next-button-img" src="undo.png" alt="Next button">
-    </div>
-    <button onclick="toggleFullscreen()" id="fullscreenbutton">Toggle Fullscreen</button>
-    <script src="options.js"></script>
-    <script>
-        // const leftSide = document.getElementById('left-side');
-        // const rightSide = document.getElementById('right-side');
-        const dots = document.getElementById('dotholder');
-        const dotbutton = document.getElementById('dotclicker');
-        let rednum = 0;
-        let bluenum = 0;
-        // import { options } from './options.js';
-        // options = require('./options');
-        function createDot(event) {
-            const dot = document.createElement('div');
-            dot.style.left = 100 * (event.clientX - 25)/window.innerWidth + '%';
-            dot.style.top = 100 * (event.clientY - 25)/window.innerHeight + '%';
-
-            if (event.clientX < window.innerWidth / 2) {
-                dot.classList.add('red');
-                dot.classList.add('dot');
-                dots.appendChild(dot);
-                rednum++;
-                update();
-            } else {
-                dot.classList.add('blue');
-                dot.classList.add('dot');
-                dots.appendChild(dot);
-                bluenum++;
-                update();
-            }
+  </div>
+  <div id="dotclicker" class="fullscreen"></div>
+  <div id="next-button">
+    <img id="next-button-img" src="undo.png" alt="Next button">
+  </div>
+  <button onclick="toggleFullscreen()" id="fullscreenbutton">Toggle Fullscreen</button>
+  <script src="options.js"></script>
+  <script>
+    const dots = document.getElementById('dotholder');
+    const dotbutton = document.getElementById('dotclicker');
+    let rednum = 0;
+    let bluenum = 0;
+    let dotCreated = false; 
+    let buttonCooldown = false; 
+  
+    function createDot(event, side) {
+      if (dotCreated || buttonCooldown) return; 
+  
+      const dot = document.createElement('div');
+      dot.style.left = 100 * (event.clientX - 25) / window.innerWidth + '%';
+      dot.style.top = 100 * (event.clientY - 25) / window.innerHeight + '%';
+  
+      if (side === 'left') {
+        dot.classList.add('red');
+        dot.classList.add('dot');
+        dots.appendChild(dot);
+        rednum++; 
+      } else if (side === 'right') {
+        dot.classList.add('blue');
+        dot.classList.add('dot');
+        dots.appendChild(dot);
+        bluenum++; 
+      }
+      update();
+  
+      dotCreated = true;
+  
+      setTimeout(() => {
+        dotCreated = false; 
+      }, 100);
+  
+      buttonCooldown = true;
+      setTimeout(() => {
+        buttonCooldown = false; 
+      }, 500);
+    }
+  
+    function update() {
+      const redstat = document.getElementById("redcount");
+      const bluestat = document.getElementById("bluecount");
+      const tot = rednum + bluenum;
+      redstat.textContent = tot === 0 ? "50%" : Math.round(100 * rednum / tot) + "%";
+      bluestat.textContent = tot === 0 ? "50%" : Math.round(100 * bluenum / tot) + "%";
+    }
+  
+    function newPrompt() {
+      const left = document.getElementById("lefth1");
+      const right = document.getElementById("righth1");
+      const question = options[Math.floor(Math.random() * options.length)];
+      left.textContent = question[0];
+      right.textContent = question[1];
+      dots.innerHTML = '';
+      rednum = 0;
+      bluenum = 0;
+      update();
+    }
+  
+    function toggleFullscreen() {
+      const element = document.documentElement;
+  
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        element.requestFullscreen();
+      }
+    }
+  
+    function handleGamepadInput() {
+      const gamepads = navigator.getGamepads();
+      if (gamepads[0]) {
+        const gamepad = gamepads[0];
+  
+        if (gamepad.buttons[0].pressed || gamepad.buttons[1].pressed) {
+          const x = Math.random() * window.innerWidth / 2;
+          const y = Math.random() * window.innerHeight;
+          createDot({ clientX: x, clientY: y }, 'left');
         }
-        function update() {
-            const redstat = document.getElementById("redcount");
-            const bluestat = document.getElementById("bluecount");
-            const tot = rednum + bluenum;
-            redstat.textContent = tot == 0 ? "50%": Math.round(100 * rednum / (rednum + bluenum)) + "%";
-            bluestat.textContent = tot == 0 ? "50%":  Math.round(100 * bluenum / (rednum + bluenum)) + "%";
+  
+        if (gamepad.buttons[2].pressed || gamepad.buttons[3].pressed) {
+          const x = Math.random() * window.innerWidth / 2 + window.innerWidth / 2;
+          const y = Math.random() * window.innerHeight;
+          createDot({ clientX: x, clientY: y }, 'right');
         }
-        function newPrompt() {
-            const left = document.getElementById("lefth1");
-            const right = document.getElementById("righth1");
-            const question = options[Math.floor(Math.random() * options.length)];
-            left.textContent = question[0];
-            right.textContent = question[1];
-            dots.innerHTML = '';
-            rednum = 0;
-            bluenum = 0;
-            update();
-        }
-        function toggleFullscreen() {
-            const element = document.documentElement;
-
-            if (document.fullscreenElement) {
-                document.exitFullscreen();
-            } else {
-                element.requestFullscreen();
-            }
-        }
-
-        dotbutton.addEventListener('click', createDot);
-        // You can add event listeners and functionality to the button here
-        const nextButton = document.getElementById('next-button');
-
-        nextButton.addEventListener('click', newPrompt);
-        document.addEventListener("DOMContentLoaded", newPrompt);
-    </script>
+      }
+      requestAnimationFrame(handleGamepadInput);
+    }
+  
+    dotbutton.addEventListener('click', (event) => createDot(event, event.clientX < window.innerWidth / 2 ? 'left' : 'right'));
+    const nextButton = document.getElementById('next-button');
+    nextButton.addEventListener('click', newPrompt);
+    document.addEventListener("DOMContentLoaded", newPrompt);
+  
+    window.addEventListener('gamepadconnected', handleGamepadInput);
+  </script>
+ 
 </body>
 </html>
