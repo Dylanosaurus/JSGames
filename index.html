@@ -250,6 +250,10 @@
           const y = Math.random() * window.innerHeight;
           createDot({ clientX: x, clientY: y }, 'right');
         }
+
+        if (gamepad.buttons[11] && gamepad.buttons[11].pressed) {
+            window.history.back(); 
+        }
       }
       requestAnimationFrame(handleGamepadInput);
     }
